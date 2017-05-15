@@ -2,8 +2,6 @@ let express = require('express');
 let router = express.Router();
 var multer = require('multer');
 var upload = multer({ dest: 'public/uploads/' });
-var del = require('del');
-var Loki = require('lokijs');
 
 
 // reference Game model for CRUD
