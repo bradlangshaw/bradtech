@@ -6,10 +6,13 @@
     "prestart": "tsc",
     "start": "node ./bin/www"
   },
+    "engines": { "node" : "~6.10.2",
+              "npm" : "~3.10.10" },
   "dependencies": {
     "body-parser": "~1.16.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
+    "del": "^2.2.2",
     "ejs": "~2.5.5",
     "express": "^4.14.1",
     "express-session": "^1.15.2",
