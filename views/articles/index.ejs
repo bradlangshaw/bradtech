@@ -1,0 +1,46 @@
+<% include ../partials/header.ejs %>
+<article class="col-md-8 col-md-offset-1 col-sm-12" style="height: 700px;"> 
+<h1>Articles</h1>
+<% if (user) { %>
+    <a href="/articles/add">Add a New Article</a>
+<% } %>
+<table class="table table-striped table-hover">
+    <tr>
+        <th class="hidden">Images<th>
+        <th>Articles Sorted By Date</th>
+        <% if (user) { %>
+            <th>Actions</th>
+        <% } %>
+    </tr>
+  </table>
+    <% for (var i = 0; i < articles.length; i++) { %>
+        <div class="col-md-12 articleListing">
+           <div class="col-md-3"> 
+            <a href="/articles/<%= articles[i]._id %>">
+            <img class="listArticleImg" width="175px" src="../uploads/<%= articles[i].imagesrc %>"/></a></div>
+          <% if (user) { %>
+            <div class="col-md-6 articleDesc"> 
+            <a href="/articles/<%= articles[i]._id %>">
+                <h4><%= articles[i].title %></h4>
+            </a>
+            <p><%= articles[i].description %></p>
+             <small><%= articles[i].date %>
+            <%= articles[i].author %></small>  
+            </div>
+                <div class="col-md-3">
+                    <a href="/articles/<%= articles[i]._id %>" class="btn btn-info">Edit</a>
+                    <a href="/articles/delete/<%= articles[i]._id %>" class="btn btn-danger confirmation">Delete</a>
+                </div>
+            <% } 
+            else{ %>
+            <div class="col-md-9 articleDesc"> <a href="/articles/<%= articles[i]._id %>"><h4><%= articles[i].title %></h4></a>
+            <p><%= articles[i].description %></p>
+             <small><%= articles[i].date %>
+            <%= articles[i].author %></small>  
+            </div>
+            <% } %> 
+        </div>
+    <% } %>
+
+</article>
+<% include ../partials/footer.ejs %>
