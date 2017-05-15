@@ -4,18 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var multer = require('multer');
-var loki = require('lokijs');
-var fs = require('fs');
-var cors = require('cors');
 var bodyParser = require('body-parser');
 
 const nodemailer = require('nodemailer');
 
 
-const UPLOAD_PATH = 'uploads';
-const COLLECTION_NAME = 'images';
 // passport dependencies
-var upload = multer({ dest: `${UPLOAD_PATH}/` });
+var upload = multer({ dest: `uploads/` });
 let passport = require('passport');
 let session = require('express-session');
 let localStrategy = require('passport-local').Strategy;
@@ -65,23 +60,6 @@ app.use(passport.session());
 let Account = require('./models/account');
 passport.use(Account.createStrategy());
 
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
-
-passport.use(new GoogleStrategy({
-        clientID: config.google.clientID,
-        clientSecret: config.google.clientSecret,
-        callbackURL: config.google.callbackURL,
-        profileFields: ['id', 'emails']
-    },
-    function(accessToken, refreshToken, profile, cb) {
-        Account.findOrCreate({
-            googleId: profile.id,
-            username: profile.emails[0].value
-        }, function (err, user) {
-            return cb(err, user);
-        });
-    }
-));
 
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
