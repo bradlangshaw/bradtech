@@ -6,15 +6,12 @@ var cookieParser = require('cookie-parser');
 var multer = require('multer');
 var bodyParser = require('body-parser');
 
-const nodemailer = require('nodemailer');
-
-
+let nodemailer = require('nodemailer');
 // passport dependencies
-var upload = multer({ dest: `uploads/` });
 let passport = require('passport');
 let session = require('express-session');
 let localStrategy = require('passport-local').Strategy;
-
+var upload = multer({ dest: 'uploads/' });
 
 var index = require('./routes/index');
 var users = require('./routes/users');
