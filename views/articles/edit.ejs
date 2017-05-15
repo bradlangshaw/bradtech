@@ -1,0 +1,55 @@
+<% include ../partials/header.ejs %>
+
+<article class="col-md-8 col-md-offset-1 col-sm-12" style="height: 700px;">
+ <% if (user) { %>
+    <h1>Article Details</h1>
+
+    <form method="post" encType="multipart/form-data">
+        <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">Title: *</label>
+            <input name="title" id="title" required value="<%= article.title %>" />
+        </div>
+        <div class="form-group">
+            <label for="date" class="col-sm-2 control-label">Date: *</label>
+            <input name="date" id="date" required value="<%= article.date %>" />
+        </div>
+        <div class="form-group">
+            <label for="author" class="col-sm-2 control-label">Author:</label>
+            <select name="author" id="author">
+                <option <% if (article.author == 'Brad Langshaw') { %> selected <% } %> >Brad Langshaw</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="desciption" class="col-sm-2 control-label">Desciption:</label>
+            <input name="desciption" id="description" type="text" required value="<%= article.description %>" />
+        </div>
+         <div class="form-group">
+            <label for="body" class="col-sm-2 control-label">Body Text:</label>
+            <textarea name="body" id="body" type="text"><%= article.body %></textarea>
+        </div>
+           <div class="form-group">
+            <label for="imagesrc" class="col-sm-2 control-label">Image:</label>
+            <input name="imagesrc" id="imagesrc" type="file" />
+        </div>
+        <div class="form-group">
+            <label name="mediasrc" class="col-sm-2 control-label">Youtube Iframe Embed:<br><small> W=740 H=372.5</small></label>
+            <input name="mediasrc" id="mediasrc" type="text" value="<%= article.mediasrc %>"/>
+        </div>
+        <button class="btn btn-success col-sm-offset-2">Save</button>
+    </form>
+<% } 
+else{ %>
+       <div class="col-md-12">  
+            <h1><%= article.title %></h1>
+            <small><%= article.date %> By <%= article.author %></small>
+            <p class="articleParagraph"><%= article.body %></p>     
+           <aside class="text-center col-md-6">
+           <img width="400px" src="../uploads/<%= article.imagesrc %>"/></a>
+           <%= article.mediasrc %>
+  </aside>
+        </div>
+ <% } %>
+
+</article>
+
+<% include ../partials/footer.ejs %>

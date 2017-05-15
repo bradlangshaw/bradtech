@@ -1,0 +1,41 @@
+<% include ../partials/header.ejs %>
+<article class="col-md-8 col-md-offset-1 col-sm-12" style="height: 700px;">
+    <h1>New Article Details</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">Title: *</label>
+            <input name="title" id="title" required />
+        </div>
+        <div class="form-group">
+            <label for="date" class="col-sm-2 control-label">Date: *</label>
+            <input name="date" id="date" required />
+        </div>
+        <div class="form-group">
+            <label for="author" class="col-sm-2 control-label">Author:</label>
+            <select name="author" id="author">
+                <option>Brad Langshaw</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">Desciption:</label>
+            <input name="description" id="description" type="text" required />
+        </div>
+         <div class="form-group">
+            <label for="body" class="col-sm-2 control-label">Body Text:</label>
+            <textarea name="body" id="body" type="text" required></textarea>
+        </div>
+         <div class="form-group">
+            <label for="imagesrc" class="col-sm-2 control-label">Image:</label>
+            <input name="imagesrc" id="imagesrc" type="file"/>
+        </div>
+         <div class="form-group">
+            <label name="mediasrc" class="col-sm-2 control-label">Youtube Iframe Embed:<br><small>W=740 H=372.5</small></label>
+            <input name="mediasrc" id="mediasrc" type="text"/>
+        </div>
+        <button class="btn btn-success col-sm-offset-2">Save</button>
+    </form>
+
+</article>
+
+<% include ../partials/footer.ejs %>
